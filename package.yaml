@@ -1,0 +1,81 @@
+name: aws-xray-client
+
+dependencies:
+  - base
+
+default-extensions:
+  - BangPatterns
+  - DataKinds
+  - DeriveAnyClass
+  - DeriveFoldable
+  - DeriveFunctor
+  - DeriveGeneric
+  - DeriveLift
+  - DeriveTraversable
+  - DerivingStrategies
+  - FlexibleContexts
+  - FlexibleInstances
+  - GADTs
+  - GeneralizedNewtypeDeriving
+  - LambdaCase
+  - MultiParamTypeClasses
+  - NoImplicitPrelude
+  - NoMonomorphismRestriction
+  - OverloadedStrings
+  - RankNTypes
+  - RecordWildCards
+  - ScopedTypeVariables
+  - StandaloneDeriving
+  - TypeApplications
+  - TypeFamilies
+
+library:
+  source-dirs: library
+  dependencies:
+    - aeson
+    - bytestring
+    - containers
+    - deepseq
+    - http-types
+    - lens
+    - network
+    - random
+    - text
+    - time
+    - unliftio
+    - unliftio-core
+    - vault
+    - wai
+
+    # Just for persistent
+    - conduit
+    - persistent
+    - resourcet
+
+tests:
+  spec:
+    main: Spec.hs
+    source-dirs: tests
+    ghc-options: -threaded -rtsopts -O0 "-with-rtsopts=-N"
+    dependencies:
+      - QuickCheck
+      - aeson
+      - aeson-qq
+      - aws-xray-client
+      - generic-arbitrary
+      - hspec
+      - lens
+      - random
+      - text
+
+benchmarks:
+  bench:
+    main: Bench.hs
+    source-dirs: benchmarks
+    dependencies:
+      - async
+      - aws-xray-client
+      - criterion
+      - random
+      - time
+    ghc-options: -threaded -O2 -with-rtsopts=-N

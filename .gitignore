@@ -1,0 +1,6 @@
+.stack-work*
+\#*#
+*.log
+*.hoo
+*.cabal
+*.prof

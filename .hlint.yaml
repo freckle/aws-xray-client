@@ -71,5 +71,4 @@
   - {name: [Data.Sequence], as: Seq}
 
 - functions:
-  - {name: unsafePerformIO, within: []}  # never use unsafePerformIO
   - {name: fromJustNote, within: []}  # cause warning on fromJustNote

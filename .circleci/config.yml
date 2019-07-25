@@ -1,0 +1,54 @@
+---
+version: 2
+
+references:
+  stack_build: &stack_build
+    docker:
+      # https://github.com/haskell-works/stack-build/blob/master/minimal/Dockerfile
+      - image: quay.io/haskell_works/stack-build-minimal
+    steps:
+      - checkout
+      - run:
+          name: Digest
+          command: |
+            {
+              stack --version
+              echo -- "$STACK_YAML/$STACK_ARGUMENTS"
+            } > rdigest
+            git ls-files | xargs md5sum > digest
+      - restore_cache:
+          keys:
+            - v1-{{ .Branch }}-{{ checksum "rdigest" }}-{{ checksum "digest" }}
+            - v1-{{ .Branch }}-
+            - v1-master-
+      - run:
+          name: Upgrade Stack
+          command: stack upgrade
+      - run:
+          name: Dependencies
+          command: make setup
+      - run:
+          name: Build
+          command: make build
+      - save_cache:
+          # yamllint disable-line rule:line-length
+          key: v1-{{ .Branch }}-{{ checksum "rdigest" }}-{{ checksum "digest" }}
+          paths:
+            - ~/.stack
+            - ./.stack-work
+      - run:
+          name: Lint
+          command: make lint
+      - run:
+          name: Test
+          command: make test
+
+jobs:
+  build:
+    <<: *stack_build
+
+workflows:
+  version: 2
+  commit:
+    jobs:
+      - build

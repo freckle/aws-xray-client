@@ -1,0 +1,16 @@
+- package:
+  - name: aws-xray-client
+  - section:
+    - name: bench:bench
+    - message:
+      - name: Module not compiled
+      - module: Bench.hs
+    - message:
+      - name: Redundant build-depends entry
+      - depends:
+        - async
+        - aws-xray-client
+        - criterion
+        - random
+        - time
+

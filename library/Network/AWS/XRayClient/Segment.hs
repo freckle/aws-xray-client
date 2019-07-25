@@ -254,9 +254,9 @@ xrayIndependentSubsegment name segmentId traceId startTime mEndTime parentId =
     }
 
 -- | Type for the @service@ field of a segment document.
-data XRaySegmentService
+newtype XRaySegmentService
   = XRaySegmentService
-  { _xraySegmentServiceVersion :: !Text
+  { _xraySegmentServiceVersion :: Text
     -- ^ A string that identifies the version of your application that served
     -- the request.
   } deriving (Show, Eq)
@@ -371,9 +371,9 @@ xraySegmentAwsDef = XRaySegmentAws
   , _xraySegmentAwsTableName = Nothing
   }
 
-data XRaySegmentAwsEcs
+newtype XRaySegmentAwsEcs
   = XRaySegmentAwsEcs
-  { _xraySegmentAwsEcsContainer :: !(Maybe Text)
+  { _xraySegmentAwsEcsContainer :: Maybe Text
     -- ^ The container ID of the container running your application.
   } deriving (Show, Eq)
 

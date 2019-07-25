@@ -1,6 +1,8 @@
 resolver: lts-13.29
 packages:
-- .
+- aws-xray-client
+- aws-xray-client-wai
+- aws-xray-client-persistent
 # NB. -fignore-optim-changes can get in the way of profiling projects. To
 # build for profiling, consider using a separate .stack-work directory or
 # reversing the flag using `fno-ignore-optim-changes`.

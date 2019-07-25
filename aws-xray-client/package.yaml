@@ -34,7 +34,6 @@ library:
   dependencies:
     - aeson
     - bytestring
-    - containers
     - deepseq
     - http-types
     - lens
@@ -42,15 +41,6 @@ library:
     - random
     - text
     - time
-    - unliftio
-    - unliftio-core
-    - vault
-    - wai
-
-    # Just for persistent
-    - conduit
-    - persistent
-    - resourcet
 
 tests:
   spec:

@@ -1,0 +1,35 @@
+name: Release
+
+on:
+  push:
+    branches: main
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        package:
+          - aws-xray-client
+          - aws-xray-client-persistent
+          - aws-xray-client-wai
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - id: tag
+        uses: freckle/haskell-tag-action@main
+        with:
+          package-yaml: ${{ matrix.package }}/package.yaml
+          tag-prefix: ${{ matrix.package }}-v
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - if: steps.tag.outputs.tag
+        uses: freckle/stack-upload-action@main
+        with:
+          working-directory: ${{ matrix.package }}
+          pvp-bounds: lower
+        env:
+          HACKAGE_API_KEY: ${{ secrets.HACKAGE_UPLOAD_API_KEY }}

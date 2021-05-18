@@ -1,0 +1,50 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.33.0.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: 7d2c5780fa214b7483f6d74bd71340b3877c684d3038276c485ba74ebd8081cb
+
+name:           aws-xray-client-wai
+version:        0.1.0.0
+synopsis:       A client for AWS X-Ray integration with WAI.
+description:    Works with `aws-xray-client` to enable X-Ray tracing with WAI.
+homepage:       https://github.com/freckle/aws-xray-client#readme
+bug-reports:    https://github.com/freckle/aws-xray-client/issues
+author:         Freckle R&D
+maintainer:     engineering@freckle.com
+copyright:      2021 Renaissance Learning Inc
+license:        MIT
+build-type:     Simple
+extra-source-files:
+    README.md
+    CHANGELOG.md
+
+source-repository head
+  type: git
+  location: https://github.com/freckle/aws-xray-client
+
+library
+  exposed-modules:
+      Network.AWS.XRayClient.WAI
+  other-modules:
+      Paths_aws_xray_client_wai
+  hs-source-dirs:
+      library
+  default-extensions: BangPatterns DataKinds DeriveAnyClass DeriveFoldable DeriveFunctor DeriveGeneric DeriveLift DeriveTraversable DerivingStrategies FlexibleContexts FlexibleInstances GADTs GeneralizedNewtypeDeriving LambdaCase MultiParamTypeClasses NoImplicitPrelude NoMonomorphismRestriction OverloadedStrings RankNTypes RecordWildCards ScopedTypeVariables StandaloneDeriving TypeApplications TypeFamilies
+  build-depends:
+      aws-xray-client
+    , base <5
+    , bytestring
+    , containers
+    , http-types
+    , lens
+    , random
+    , text
+    , time
+    , unliftio
+    , unliftio-core
+    , vault
+    , wai
+  default-language: Haskell2010

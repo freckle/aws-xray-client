@@ -1,0 +1,47 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.33.0.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: 683943cc3d89e01c103f283b419b076d204a8c07ed66e3e1452d2dffc98f40ea
+
+name:           aws-xray-client-persistent
+version:        0.1.0.0
+synopsis:       A client for AWS X-Ray integration with Persistent.
+description:    Works with `aws-xray-client` to enable X-Ray tracing with Persistent.
+homepage:       https://github.com/freckle/aws-xray-client#readme
+bug-reports:    https://github.com/freckle/aws-xray-client/issues
+author:         Freckle R&D
+maintainer:     engineering@freckle.com
+copyright:      2021 Renaissance Learning Inc
+license:        MIT
+build-type:     Simple
+extra-source-files:
+    README.md
+    CHANGELOG.md
+
+source-repository head
+  type: git
+  location: https://github.com/freckle/aws-xray-client
+
+library
+  exposed-modules:
+      Network.AWS.XRayClient.Persistent
+  other-modules:
+      Paths_aws_xray_client_persistent
+  hs-source-dirs:
+      library
+  default-extensions: BangPatterns DataKinds DeriveAnyClass DeriveFoldable DeriveFunctor DeriveGeneric DeriveLift DeriveTraversable DerivingStrategies FlexibleContexts FlexibleInstances GADTs GeneralizedNewtypeDeriving LambdaCase MultiParamTypeClasses NoImplicitPrelude NoMonomorphismRestriction OverloadedStrings RankNTypes RecordWildCards ScopedTypeVariables StandaloneDeriving TypeApplications TypeFamilies
+  build-depends:
+      aws-xray-client
+    , base <5
+    , conduit
+    , containers
+    , lens
+    , persistent
+    , random
+    , resourcet
+    , text
+    , time
+  default-language: Haskell2010

@@ -2,5 +2,4 @@
 \#*#
 *.log
 *.hoo
-*.cabal
 *.prof

@@ -1,13 +1,13 @@
 cabal-version: 1.12
 
--- This file has been generated from package.yaml by hpack version 0.33.0.
+-- This file has been generated from package.yaml by hpack version 0.34.4.
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 683943cc3d89e01c103f283b419b076d204a8c07ed66e3e1452d2dffc98f40ea
+-- hash: 132d0ad350f9df2b66a64bf3e14482e8847c3798baddbc58ddb3cea091b827e3
 
 name:           aws-xray-client-persistent
-version:        0.1.0.0
+version:        0.1.0.1
 synopsis:       A client for AWS X-Ray integration with Persistent.
 description:    Works with `aws-xray-client` to enable X-Ray tracing with Persistent.
 homepage:       https://github.com/freckle/aws-xray-client#readme
@@ -32,7 +32,31 @@ library
       Paths_aws_xray_client_persistent
   hs-source-dirs:
       library
-  default-extensions: BangPatterns DataKinds DeriveAnyClass DeriveFoldable DeriveFunctor DeriveGeneric DeriveLift DeriveTraversable DerivingStrategies FlexibleContexts FlexibleInstances GADTs GeneralizedNewtypeDeriving LambdaCase MultiParamTypeClasses NoImplicitPrelude NoMonomorphismRestriction OverloadedStrings RankNTypes RecordWildCards ScopedTypeVariables StandaloneDeriving TypeApplications TypeFamilies
+  default-extensions:
+      BangPatterns
+      DataKinds
+      DeriveAnyClass
+      DeriveFoldable
+      DeriveFunctor
+      DeriveGeneric
+      DeriveLift
+      DeriveTraversable
+      DerivingStrategies
+      FlexibleContexts
+      FlexibleInstances
+      GADTs
+      GeneralizedNewtypeDeriving
+      LambdaCase
+      MultiParamTypeClasses
+      NoImplicitPrelude
+      NoMonomorphismRestriction
+      OverloadedStrings
+      RankNTypes
+      RecordWildCards
+      ScopedTypeVariables
+      StandaloneDeriving
+      TypeApplications
+      TypeFamilies
   build-depends:
       aws-xray-client
     , base <5

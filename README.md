@@ -1,2 +1,2 @@
-# aws-xray-client [![CircleCI](https://circleci.com/gh/freckle/aws-xray-client.svg?style=svg)](https://circleci.com/gh/freckle/aws-xray-client)
+# aws-xray-client [![CI](https://github.com/freckle/aws-xray-client/actions/workflows/ci.yml/badge.svg)](https://github.com/freckle/aws-xray-client/actions/workflows/ci.yml)
 A Haskell client for AWS X-Ray supporting WAI and Persistent

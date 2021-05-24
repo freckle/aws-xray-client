@@ -15,7 +15,8 @@ import Data.Text (Text)
 import Data.Time.Clock.POSIX
 import Database.Persist
 import Database.Persist.Sql
-import Database.Persist.Sql.Types.Internal (IsPersistBackend(mkPersistBackend))
+import Database.Persist.Sql.Types.Internal
+  (IsPersistBackend(mkPersistBackend), SqlBackend(..))
 import Network.AWS.XRayClient.Segment
 import Network.AWS.XRayClient.TraceId
 import System.Random

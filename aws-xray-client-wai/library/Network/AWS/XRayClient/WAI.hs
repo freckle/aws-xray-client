@@ -1,7 +1,4 @@
-{-# LANGUAGE NamedFieldPuns #-}
-
--- | Module for using a WAI Middleware as an X-Ray client.
-
+-- | Module for using a WAI Middleware as an X-Ray client
 module Network.AWS.XRayClient.WAI
   ( XRayClientConfig(..)
   , xrayClientConfig
@@ -27,7 +24,6 @@ import Control.Monad.IO.Unlift (MonadUnliftIO)
 import qualified Data.ByteString.Char8 as BS8
 import Data.Foldable (toList)
 import Data.IORef
-import Data.Monoid ((<>))
 import Data.Sequence (Seq, (|>))
 import qualified Data.Sequence as Seq
 import Data.Text (Text)

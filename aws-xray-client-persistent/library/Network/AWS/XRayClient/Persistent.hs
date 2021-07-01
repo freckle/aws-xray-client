@@ -7,7 +7,6 @@ import Prelude
 import Conduit
 import Control.Lens
 import Control.Monad (void)
-import Data.Acquire (Acquire)
 import Data.Foldable (for_)
 import Data.IORef
 import qualified Data.Map as Map

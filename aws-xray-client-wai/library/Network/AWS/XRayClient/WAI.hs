@@ -1,7 +1,4 @@
-{-# LANGUAGE NamedFieldPuns #-}
-
--- | Module for using a WAI Middleware as an X-Ray client.
-
+-- | Module for using a WAI Middleware as an X-Ray client
 module Network.AWS.XRayClient.WAI
   ( XRayClientConfig(..)
   , xrayClientConfig
@@ -27,7 +24,6 @@ import Control.Monad.IO.Unlift (MonadUnliftIO)
 import qualified Data.ByteString.Char8 as BS8
 import Data.Foldable (toList)
 import Data.IORef
-import Data.Monoid ((<>))
 import Data.Sequence (Seq, (|>))
 import qualified Data.Sequence as Seq
 import Data.Text (Text)
@@ -45,16 +41,16 @@ import System.Random.XRayCustom
 import UnliftIO.Exception (finally)
 
 -- | Configuration type for the XRay client middleware.
-data XRayClientConfig
-  = XRayClientConfig
+data XRayClientConfig = XRayClientConfig
   { xrayClientConfigDaemonHost :: !Text
-    -- ^ The host that the daemon is listening on.
+  -- ^ The host that the daemon is listening on.
   , xrayClientConfigDaemonPort :: !Int
-    -- ^ The port that the daemon is listening on.
+  -- ^ The port that the daemon is listening on.
   , xrayClientConfigApplicationName :: !Text
-    -- ^ The value of the "name" field that will be sent to X-Ray.
-  , xrayClientConfigSampler :: !(Maybe (Request -> Response -> POSIXTime -> POSIXTime -> IO Bool))
-    -- ^ A sampling function to filter traces.
+  -- ^ The value of the "name" field that will be sent to X-Ray.
+  , xrayClientConfigSampler
+      :: !(Maybe (Request -> Response -> POSIXTime -> POSIXTime -> IO Bool))
+  -- ^ A sampling function to filter traces.
   }
 
 -- | Constructor for 'XRayClientConfig' with required arguments.
@@ -174,18 +170,17 @@ addResponseToSegment response =
     %~ (xraySegmentHttpResponseStatus ?~ statusCode (responseStatus response))
 
 -- | We use the WAI 'V.Vault' to store data needed during traces.
-data XRayVaultData
-  = XRayVaultData
+data XRayVaultData = XRayVaultData
   { xrayVaultDataTraceIdHeaderData :: !XRayTraceIdHeaderData
-    -- ^ Data about the current trace.
+  -- ^ Data about the current trace.
   , xrayVaultDataClientConfig :: !XRayClientConfig
-    -- ^ Client configuration passed into the middleware.
+  -- ^ Client configuration passed into the middleware.
   , xrayVaultDataRootSegmentId :: !XRaySegmentId
-    -- ^ Segment ID of the root segment for this request.
+  -- ^ Segment ID of the root segment for this request.
   , xrayVaultDataStdGen :: !(IORef StdGen)
-    -- ^ 'StdGen' for generating segment IDs and trace IDs.
+  -- ^ 'StdGen' for generating segment IDs and trace IDs.
   , xrayVaultDataSubsegments :: !(IORef (Seq XRaySegment))
-    -- ^ Current list of subsegments.
+  -- ^ Current list of subsegments.
   }
 
 -- | This is a 'V.Key' for the @vault@ inside each WAI 'Request'. It is used to
@@ -223,22 +218,18 @@ traceXRaySubsegment' vaultData subsegmentName modifySubsegment action = do
   startTime <- liftIO getPOSIXTime
 
   -- Catch any exceptions and rethrow them once we've sent the segment
-  finally action
-    $ liftIO
-    $ do
-        endTime <- getPOSIXTime
+  finally action $ liftIO $ do
+    endTime <- getPOSIXTime
 
-        -- Generate a segment ID
-        segmentId <- withRandomGenIORef
-          (xrayVaultDataStdGen vaultData)
-          generateXRaySegmentId
+    segmentId <- withRandomGenIORef
+      (xrayVaultDataStdGen vaultData)
+      generateXRaySegmentId
 
-        -- Create the subsegment value and append to the subsegments.
-        let
-          subsegment =
-            xraySubsegment subsegmentName segmentId startTime (Just endTime)
-          subsegment' = modifySubsegment subsegment
-        atomicallyAddVaultDataSubsegment vaultData subsegment'
+    let
+      subsegment =
+        xraySubsegment subsegmentName segmentId startTime (Just endTime)
+      subsegment' = modifySubsegment subsegment
+    atomicallyAddVaultDataSubsegment vaultData subsegment'
 
 -- | Add subsegment to XRay vault data 'IORef'.
 atomicallyAddVaultDataSubsegment :: XRayVaultData -> XRaySegment -> IO ()

@@ -1,30 +1,30 @@
-resolver: lts-13.29
+resolver: lts-18.0
+
 packages:
 - aws-xray-client
 - aws-xray-client-wai
 - aws-xray-client-persistent
-# NB. -fignore-optim-changes can get in the way of profiling projects. To
-# build for profiling, consider using a separate .stack-work directory or
-# reversing the flag using `fno-ignore-optim-changes`.
+
 ghc-options:
-  "$locals":
-    -ddump-to-file
-    -ddump-hi
-    -fhide-source-paths
-    -Weverything
-    -Wno-missing-exported-signatures
-    -Wno-missed-specialisations
-    -Wno-all-missed-specialisations
-    -Wno-unsafe
-    -Wno-safe
-    -Wno-missing-local-signatures
-    -Wno-monomorphism-restriction
-    -Wno-missing-import-lists
-    -Wno-missing-export-lists
-    -Wno-incomplete-uni-patterns
-    -Wno-partial-fields
-    -Wno-implicit-prelude
-    -Wno-redundant-constraints
-    -Wno-deriving-typeable
-    -Wno-missing-monadfail-instances
+  "$locals": >-
+    -fwrite-ide-info
     -fignore-optim-changes
+    -Weverything
+    -Wno-all-missed-specialisations
+    -Wno-deriving-typeable
+    -Wno-implicit-prelude
+    -Wno-incomplete-uni-patterns
+    -Wno-missed-specialisations
+    -Wno-missing-deriving-strategies
+    -Wno-missing-export-lists
+    -Wno-missing-exported-signatures
+    -Wno-missing-import-lists
+    -Wno-missing-local-signatures
+    -Wno-missing-monadfail-instances
+    -Wno-missing-safe-haskell-mode
+    -Wno-monomorphism-restriction
+    -Wno-partial-fields
+    -Wno-prepositive-qualified-module
+    -Wno-redundant-constraints
+    -Wno-safe
+    -Wno-unsafe

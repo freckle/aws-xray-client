@@ -82,14 +82,16 @@ newtype XRaySegmentId = XRaySegmentId { unXRaySegmentId :: Text }
 generateXRaySegmentId :: StdGen -> (XRaySegmentId, StdGen)
 generateXRaySegmentId = first (XRaySegmentId . T.pack) . randomHexString 16
 
--- | This holds the data from the X-Amzn-Trace-Id header. See
--- http://docs.aws.amazon.com/xray/latest/devguide/xray-concepts.html#xray-concepts-tracingheader
-data XRayTraceIdHeaderData
-  = XRayTraceIdHeaderData
+-- | This holds the data from the @X-Amzn-Trace-Id@ header
+--
+-- See <http://docs.aws.amazon.com/xray/latest/devguide/xray-concepts.html#xray-concepts-tracingheader>
+--
+data XRayTraceIdHeaderData = XRayTraceIdHeaderData
   { xrayTraceIdHeaderDataRootTraceId :: !XRayTraceId
   , xrayTraceIdHeaderDataParentId :: !(Maybe XRaySegmentId)
   , xrayTraceIdHeaderDataSampled :: !(Maybe Bool)
-  } deriving (Show, Eq, Generic)
+  }
+  deriving (Show, Eq, Generic)
 
 -- | Constructor for 'XRayTraceIdHeaderData'.
 xrayTraceIdHeaderData :: XRayTraceId -> XRayTraceIdHeaderData
@@ -107,9 +109,8 @@ parseXRayTraceIdHeaderData rawHeader = do
   traceId <- lookup "Root" components
   pure XRayTraceIdHeaderData
     { xrayTraceIdHeaderDataRootTraceId = XRayTraceId (T.decodeUtf8 traceId)
-    , xrayTraceIdHeaderDataParentId = XRaySegmentId
-      . T.decodeUtf8
-      <$> lookup "Parent" components
+    , xrayTraceIdHeaderDataParentId =
+      XRaySegmentId . T.decodeUtf8 <$> lookup "Parent" components
     , xrayTraceIdHeaderDataSampled = lookup "Sampled" components >>= readSampled
     }
  where

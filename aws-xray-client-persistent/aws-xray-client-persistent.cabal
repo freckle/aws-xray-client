@@ -4,10 +4,10 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 132d0ad350f9df2b66a64bf3e14482e8847c3798baddbc58ddb3cea091b827e3
+-- hash: bfb0ebec9e80a973bab7970669a553ea99240461faa03c93502cec90cf0ce90c
 
 name:           aws-xray-client-persistent
-version:        0.1.0.1
+version:        0.1.0.2
 synopsis:       A client for AWS X-Ray integration with Persistent.
 description:    Works with `aws-xray-client` to enable X-Ray tracing with Persistent.
 homepage:       https://github.com/freckle/aws-xray-client#readme

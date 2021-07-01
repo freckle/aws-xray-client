@@ -4,10 +4,10 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 75ce92092507bcaf0ef00000194035a6793a29e7ff13bb4fb0ffa0c77c851cec
+-- hash: 62b031d2dffbac7ecd4368fe9f382a9172d71dd60c841b9e06fc31c638d872c0
 
 name:           aws-xray-client
-version:        0.1.0.0
+version:        0.1.0.1
 synopsis:       A client for AWS X-Ray.
 description:    The core client for enabling AWX X-Ray.
                 .

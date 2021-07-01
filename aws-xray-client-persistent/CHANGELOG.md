@@ -1,8 +1,12 @@
-## [*Unreleased*](https://github.com/freckle/aws-xray-client/tree/aws-xray-client-persistent-v0.1.0.1...main)
+## [*Unreleased*](https://github.com/freckle/aws-xray-client/compare/aws-xray-client-persistent-v0.1.0.2...main)
 
 None
 
-## [v0.1.0.1](https://github.com/freckle/aws-xray-client/tree/aws-xray-client-persistent-v0.1.0.0...aws-xray-client-persistent-v0.1.0.1)
+## [v0.1.0.2](https://github.com/freckle/aws-xray-client/compare/aws-xray-client-persistent-v0.1.0.1...aws-xray-client-persistent-v0.1.0.2)
+
+- Build on GHC 8.10
+
+## [v0.1.0.1](https://github.com/freckle/aws-xray-client/compare/aws-xray-client-persistent-v0.1.0.0...aws-xray-client-persistent-v0.1.0.1)
 
 - Add explicit import for `SqlBackend` fields
 

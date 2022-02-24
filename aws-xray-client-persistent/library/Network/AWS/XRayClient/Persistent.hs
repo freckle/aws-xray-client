@@ -1,3 +1,5 @@
+{-# LANGUAGE CPP #-}
+
 module Network.AWS.XRayClient.Persistent
   ( xraySqlBackend
   ) where
@@ -17,7 +19,7 @@ import Database.Persist.Sql
 import Database.Persist.Sql.Types.Internal
   (IsPersistBackend(mkPersistBackend), SqlBackend(..))
 import Database.Persist.SqlBackend.StatementCache
-  (mkSimpleStatementCache, mkStatementCache)
+  (mkSimpleStatementCache, mkStatementCache, StatementCache)
 import Network.AWS.XRayClient.Segment
 import Network.AWS.XRayClient.TraceId
 import System.Random
@@ -49,7 +51,7 @@ xraySqlBackend sendTrace stdGenIORef subsegmentName =
       , connBegin = binaryTimerWrapper "BEGIN" (connBegin backend)
       , connCommit = unaryTimerWrapper "COMMIT" (connCommit backend)
       , connRollback = unaryTimerWrapper "ROLLBACK" (connRollback backend)
-      , connStmtMap = mkStatementCache (mkSimpleStatementCache newConnStmtMap)
+      , connStmtMap = mkCache newConnStmtMap
       }
 
   connPrepare' baseConnPrepare sql = do
@@ -117,3 +119,11 @@ sendQueryTrace sendTrace subsegmentName startTime stdGenIORef sql = do
     $ xraySubsegment subsegmentName segmentId startTime (Just endTime)
     & xraySegmentSql
     ?~ (xraySegmentSqlDef & xraySegmentSqlSanitizedQuery ?~ sql)
+
+#if MIN_VERSION_persistent(2,13,3)
+mkCache :: IORef (Map.Map Text Statement) -> StatementCache
+mkCache = mkStatementCache . mkSimpleStatementCache
+#else
+mkCache :: IORef (Map.Map Text Statement) -> IORef (Map.Map Text Statement)
+mkCache = id
+#endif

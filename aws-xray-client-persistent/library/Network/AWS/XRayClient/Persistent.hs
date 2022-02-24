@@ -19,7 +19,7 @@ import Database.Persist.Sql
 import Database.Persist.Sql.Types.Internal
   (IsPersistBackend(mkPersistBackend), SqlBackend(..))
 import Database.Persist.SqlBackend.StatementCache
-  (mkSimpleStatementCache, mkStatementCache, StatementCache)
+  (StatementCache, mkSimpleStatementCache, mkStatementCache)
 import Network.AWS.XRayClient.Segment
 import Network.AWS.XRayClient.TraceId
 import System.Random

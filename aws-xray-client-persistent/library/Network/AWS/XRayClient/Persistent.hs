@@ -16,6 +16,8 @@ import Database.Persist
 import Database.Persist.Sql
 import Database.Persist.Sql.Types.Internal
   (IsPersistBackend(mkPersistBackend), SqlBackend(..))
+import Database.Persist.SqlBackend.StatementCache
+  (mkSimpleStatementCache, mkStatementCache)
 import Network.AWS.XRayClient.Segment
 import Network.AWS.XRayClient.TraceId
 import System.Random
@@ -47,7 +49,7 @@ xraySqlBackend sendTrace stdGenIORef subsegmentName =
       , connBegin = binaryTimerWrapper "BEGIN" (connBegin backend)
       , connCommit = unaryTimerWrapper "COMMIT" (connCommit backend)
       , connRollback = unaryTimerWrapper "ROLLBACK" (connRollback backend)
-      , connStmtMap = newConnStmtMap
+      , connStmtMap = mkStatementCache (mkSimpleStatementCache newConnStmtMap)
       }
 
   connPrepare' baseConnPrepare sql = do

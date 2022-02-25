@@ -18,8 +18,10 @@ import Database.Persist
 import Database.Persist.Sql
 import Database.Persist.Sql.Types.Internal
   (IsPersistBackend(mkPersistBackend), SqlBackend(..))
+#if MIN_VERSION_persistent(2,13,3)
 import Database.Persist.SqlBackend.StatementCache
   (StatementCache, mkSimpleStatementCache, mkStatementCache)
+#endif
 import Network.AWS.XRayClient.Segment
 import Network.AWS.XRayClient.TraceId
 import System.Random

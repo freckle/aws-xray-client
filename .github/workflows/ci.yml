@@ -14,7 +14,6 @@ jobs:
         stack-yaml:
           - stack.yaml
           - stack-lts-18.0.yaml
-          - stack-lts-18.25.yaml
       fail-fast: false
 
     steps:

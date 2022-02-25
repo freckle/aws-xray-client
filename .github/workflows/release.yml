@@ -33,3 +33,4 @@ jobs:
           pvp-bounds: lower
         env:
           HACKAGE_API_KEY: ${{ secrets.HACKAGE_UPLOAD_API_KEY }}
+          STACK_YAML: ../stack.yaml

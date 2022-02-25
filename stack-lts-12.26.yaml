@@ -1,6 +1,0 @@
-resolver: lts-12.26
-
-packages:
-- aws-xray-client
-- aws-xray-client-wai
-- aws-xray-client-persistent

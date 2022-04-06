@@ -1,9 +1,9 @@
-resolver: lts-18.25
+resolver: lts-19.1
 
 packages:
-- aws-xray-client
-- aws-xray-client-wai
-- aws-xray-client-persistent
+  - aws-xray-client
+  - aws-xray-client-wai
+  - aws-xray-client-persistent
 
 ghc-options:
   "$locals": >-

@@ -1,13 +1,13 @@
-cabal-version: 1.12
+cabal-version: 1.18
 
 -- This file has been generated from package.yaml by hpack version 0.34.4.
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 9f735f5c64f3b96d975b734a5a8357b674356c16619694107cc29d3103df5d83
+-- hash: eafc06144ebd3b393f9ed1cfb28bb27f273cdd75cd0133a5de4796ccef24a833
 
 name:           aws-xray-client-wai
-version:        0.1.0.1
+version:        0.1.0.2
 synopsis:       A client for AWS X-Ray integration with WAI.
 description:    Works with `aws-xray-client` to enable X-Ray tracing with WAI.
 homepage:       https://github.com/freckle/aws-xray-client#readme
@@ -17,7 +17,7 @@ maintainer:     engineering@freckle.com
 copyright:      2021 Renaissance Learning Inc
 license:        MIT
 build-type:     Simple
-extra-source-files:
+extra-doc-files:
     README.md
     CHANGELOG.md
 

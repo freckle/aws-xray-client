@@ -1,5 +1,5 @@
 name: aws-xray-client
-version: 0.1.0.1
+version: 0.1.0.2
 github:  "freckle/aws-xray-client"
 license: MIT
 author: "Freckle R&D"
@@ -10,11 +10,11 @@ description: |
   The core client for enabling AWX X-Ray.
 
   See other `aws-xray-client-*` packages for usage and integration examples.
+category: Tracing
 
-extra-source-files:
+extra-doc-files:
   - README.md
   - CHANGELOG.md
-category: Tracing
 
 dependencies:
   - base < 5

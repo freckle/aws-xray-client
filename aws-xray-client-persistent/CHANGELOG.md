@@ -1,6 +1,10 @@
-## [*Unreleased*](https://github.com/freckle/aws-xray-client/compare/aws-xray-client-persistent-v0.1.0.2...main)
+## [*Unreleased*](https://github.com/freckle/aws-xray-client/compare/aws-xray-client-persistent-v0.1.0.3...main)
 
 None
+
+## [v0.1.0.3](https://github.com/freckle/aws-xray-client/compare/aws-xray-client-persistent-v0.1.0.21...aws-xray-client-persistent-v0.1.0.3)
+
+- Support GHCs 9.0 and 9.2
 
 ## [v0.1.0.2](https://github.com/freckle/aws-xray-client/compare/aws-xray-client-persistent-v0.1.0.1...aws-xray-client-persistent-v0.1.0.2)
 

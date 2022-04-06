@@ -1,5 +1,5 @@
 name: aws-xray-client-wai
-version: 0.1.0.1
+version: 0.1.0.2
 github:  "freckle/aws-xray-client"
 license: MIT
 author: "Freckle R&D"
@@ -9,7 +9,7 @@ synopsis: A client for AWS X-Ray integration with WAI.
 description: |
   Works with `aws-xray-client` to enable X-Ray tracing with WAI.
 
-extra-source-files:
+extra-doc-files:
   - README.md
   - CHANGELOG.md
 

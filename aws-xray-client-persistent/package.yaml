@@ -51,6 +51,5 @@ library:
     - lens
     - persistent
     - random
-    - resourcet
     - text
     - time

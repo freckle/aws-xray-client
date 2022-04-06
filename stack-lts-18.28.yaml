@@ -1,0 +1,6 @@
+resolver: lts-18.28
+
+packages:
+  - aws-xray-client
+  - aws-xray-client-wai
+  - aws-xray-client-persistent

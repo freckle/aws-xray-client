@@ -1,13 +1,13 @@
-cabal-version: 1.12
+cabal-version: 1.18
 
 -- This file has been generated from package.yaml by hpack version 0.34.4.
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 62b031d2dffbac7ecd4368fe9f382a9172d71dd60c841b9e06fc31c638d872c0
+-- hash: 8d0ef575782fa5ec4b0f4abdd020cf14cefa7c4d3b6c92b28b54d8327b588eac
 
 name:           aws-xray-client
-version:        0.1.0.1
+version:        0.1.0.2
 synopsis:       A client for AWS X-Ray.
 description:    The core client for enabling AWX X-Ray.
                 .
@@ -20,7 +20,7 @@ maintainer:     engineering@freckle.com
 copyright:      2021 Renaissance Learning Inc
 license:        MIT
 build-type:     Simple
-extra-source-files:
+extra-doc-files:
     README.md
     CHANGELOG.md
 

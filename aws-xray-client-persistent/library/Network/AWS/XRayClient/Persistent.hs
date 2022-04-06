@@ -49,7 +49,11 @@ xraySqlBackend sendTrace stdGenIORef subsegmentName =
     newConnStmtMap <- newIORef Map.empty
     pure backend
       { connPrepare = connPrepare' (connPrepare backend)
+#if MIN_VERSION_persistent(2,9,0)
       , connBegin = binaryTimerWrapper "BEGIN" (connBegin backend)
+#else
+      , connBegin = unaryTimerWrapper "BEGIN" (connBegin backend)
+#endif
       , connCommit = unaryTimerWrapper "COMMIT" (connCommit backend)
       , connRollback = unaryTimerWrapper "ROLLBACK" (connRollback backend)
       , connStmtMap = mkCache newConnStmtMap
@@ -96,11 +100,13 @@ xraySqlBackend sendTrace stdGenIORef subsegmentName =
     sendQueryTrace sendTrace sql startTime stdGenIORef sql
     pure result
 
+#if MIN_VERSION_persistent(2,9,0)
   binaryTimerWrapper sql action x y = do
     startTime <- getPOSIXTime
     result <- action x y
     sendQueryTrace sendTrace sql startTime stdGenIORef sql
     pure result
+#endif
 
 sendQueryTrace
   :: (XRaySegment -> IO ())

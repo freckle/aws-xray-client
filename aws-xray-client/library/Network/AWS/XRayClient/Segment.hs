@@ -467,13 +467,13 @@ makeLenses ''XRaySegmentAwsElasticBeanstalk
 makeLenses ''XRaySegmentSql
 makeLenses ''XRaySegmentService
 
-deriveJSON (xrayAesonOptions "_xraySegment") ''XRaySegment
-deriveJSON (xrayAesonOptions "_xraySegmentHttp") ''XRaySegmentHttp
-deriveJSON (xrayAesonOptions "_xraySegmentHttpRequest") ''XRaySegmentHttpRequest
-deriveJSON (xrayAesonOptions "_xraySegmentHttpResponse") ''XRaySegmentHttpResponse
-deriveJSON (xrayAesonOptions "_xraySegmentAws") ''XRaySegmentAws
-deriveJSON (xrayAesonOptions "_xraySegmentAwsEcs") ''XRaySegmentAwsEcs
-deriveJSON (xrayAesonOptions "_xraySegmentAwsEc2") ''XRaySegmentAwsEc2
-deriveJSON (xrayAesonOptions "_xraySegmentAwsElasticBeanstalk") ''XRaySegmentAwsElasticBeanstalk
-deriveJSON (xrayAesonOptions "_xraySegmentSql") ''XRaySegmentSql
 deriveJSON (xrayAesonOptions "_xraySegmentService") ''XRaySegmentService
+deriveJSON (xrayAesonOptions "_xraySegmentSql") ''XRaySegmentSql
+deriveJSON (xrayAesonOptions "_xraySegmentAwsElasticBeanstalk") ''XRaySegmentAwsElasticBeanstalk
+deriveJSON (xrayAesonOptions "_xraySegmentAwsEc2") ''XRaySegmentAwsEc2
+deriveJSON (xrayAesonOptions "_xraySegmentAwsEcs") ''XRaySegmentAwsEcs
+deriveJSON (xrayAesonOptions "_xraySegmentAws") ''XRaySegmentAws
+deriveJSON (xrayAesonOptions "_xraySegmentHttpResponse") ''XRaySegmentHttpResponse
+deriveJSON (xrayAesonOptions "_xraySegmentHttpRequest") ''XRaySegmentHttpRequest
+deriveJSON (xrayAesonOptions "_xraySegmentHttp") ''XRaySegmentHttp
+deriveJSON (xrayAesonOptions "_xraySegment") ''XRaySegment
